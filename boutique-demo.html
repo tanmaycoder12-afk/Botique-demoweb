@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prettywomen — Bridal & Fashion Design Studio, Dadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;color:#1a1209;background:#faf8f5;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s ease;}
+nav.scrolled{background:rgba(250,248,245,0.97);box-shadow:0 1px 20px rgba(0,0,0,0.06);padding:14px 60px;}
+.logo{text-align:center;}
+.logo-main{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;letter-spacing:3px;text-transform:uppercase;transition:color 0.4s;}
+nav.scrolled .logo-main{color:#1a1209;}
+.logo-sub{font-size:9px;letter-spacing:5px;color:rgba(255,255,255,0.6);text-transform:uppercase;transition:color 0.4s;}
+nav.scrolled .logo-sub{color:#9a8a7a;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.8);transition:color 0.3s;font-weight:500;}
+nav.scrolled .nav-links a{color:#6a5a4a;}
+.nav-links a:hover{color:#c9a84c;}
+nav.scrolled .nav-links a:hover{color:#c9a84c;}
+.nav-btn{border:1px solid rgba(255,255,255,0.5);color:#fff;padding:10px 22px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+nav.scrolled .nav-btn{border-color:#c9a84c;color:#c9a84c;}
+.nav-btn:hover{background:#c9a84c;border-color:#c9a84c;color:#1a1209;}
+
+/* ── HERO ── */
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#1a1209 0%,#2d1f0e 40%,#3d2a15 70%,#1a1209 100%);}
+.hero-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,#c9a84c 0,#c9a84c 1px,transparent 0,transparent 50%);background-size:20px 20px;}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;text-align:center;padding:0 40px;}
+.hero-tag{font-size:10px;letter-spacing:6px;color:#c9a84c;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadeUp 1s ease 0.3s forwards;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,110px);font-weight:300;color:#fff;line-height:0.95;letter-spacing:-1px;margin-bottom:8px;opacity:0;animation:fadeUp 1s ease 0.6s forwards;}
+.hero h1 em{font-style:italic;color:#c9a84c;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,28px);font-weight:300;font-style:italic;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:48px;opacity:0;animation:fadeUp 1s ease 0.9s forwards;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease 1.2s forwards;}
+.btn-gold{background:#c9a84c;color:#1a1209;padding:15px 40px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.3s;display:inline-block;}
+.btn-gold:hover{background:#e0bb5f;transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4);}
+.btn-outline-w{border:1px solid rgba(255,255,255,0.4);color:#fff;padding:15px 40px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;font-weight:400;transition:all 0.3s;display:inline-block;}
+.btn-outline-w:hover{border-color:#c9a84c;color:#c9a84c;}
+.scroll-line{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s ease 1.8s forwards;}
+.scroll-line span{font-size:9px;letter-spacing:4px;color:rgba(255,255,255,0.3);text-transform:uppercase;}
+.scroll-line-bar{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);animation:scrollAnim 2s ease-in-out infinite;}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── ABOUT ── */
+#about{padding:100px 60px;background:#faf8f5;}
+.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-visual{position:relative;}
+.about-img-main{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#2d1f0e,#3d2a15);display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden;}
+.about-img-main::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,0.4));}
+.about-img-accent{position:absolute;bottom:-20px;right:-20px;width:55%;aspect-ratio:1;background:linear-gradient(135deg,#c9a84c,#8a6a2c);display:flex;align-items:center;justify-content:center;font-size:40px;}
+.about-badge{position:absolute;top:20px;left:-16px;background:#1a1209;color:#c9a84c;padding:12px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+.about-text .sec-tag{font-size:10px;font-weight:600;letter-spacing:5px;color:#c9a84c;text-transform:uppercase;margin-bottom:12px;display:block;}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:400;line-height:1.1;margin-bottom:20px;letter-spacing:-0.5px;}
+.about-text h2 em{font-style:italic;color:#c9a84c;}
+.about-text p{font-size:15px;color:#6a5a4a;line-height:1.9;margin-bottom:16px;}
+.about-stats{display:flex;gap:32px;margin-top:32px;padding-top:32px;border-top:1px solid #ede5d8;}
+.astat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#1a1209;}
+.astat-label{font-size:11px;color:#9a8a7a;letter-spacing:1px;margin-top:2px;text-transform:uppercase;}
+
+/* ── COLLECTIONS ── */
+#collections{padding:100px 60px;background:#1a1209;}
+.col-inner{max-width:1100px;margin:0 auto;}
+.col-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;}
+.sec-tag-light{font-size:10px;font-weight:600;letter-spacing:5px;color:#c9a84c;text-transform:uppercase;margin-bottom:12px;display:block;}
+.col-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,52px);font-weight:400;color:#fff;line-height:1.1;letter-spacing:-0.5px;}
+.col-title em{font-style:italic;color:#c9a84c;}
+.col-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:12px;}
+.col-item{position:relative;overflow:hidden;cursor:pointer;}
+.col-item:first-child{grid-row:span 2;}
+.col-img{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:clamp(40px,5vw,80px);position:relative;transition:transform 0.6s ease;}
+.col-item:first-child .col-img{aspect-ratio:2/3;}
+.col-item:not(:first-child) .col-img{aspect-ratio:1;}
+.col-img.c1{background:linear-gradient(160deg,#2d1f0e,#4d3520);}
+.col-img.c2{background:linear-gradient(160deg,#1a2d1a,#2d4d2d);}
+.col-img.c3{background:linear-gradient(160deg,#1a1a2d,#2d2d4d);}
+.col-img.c4{background:linear-gradient(160deg,#2d1a2d,#4d2d4d);}
+.col-img.c5{background:linear-gradient(160deg,#2d2010,#4d3820);}
+.col-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 50%);opacity:0;transition:opacity 0.4s;}
+.col-item:hover .col-overlay{opacity:1;}
+.col-item:hover .col-img{transform:scale(1.05);}
+.col-info{position:absolute;bottom:0;left:0;right:0;padding:20px;transform:translateY(10px);opacity:0;transition:all 0.4s;}
+.col-item:hover .col-info{transform:translateY(0);opacity:1;}
+.col-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:#fff;margin-bottom:4px;}
+.col-cat{font-size:10px;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;}
+.col-badge{position:absolute;top:16px;left:16px;background:#c9a84c;color:#1a1209;font-size:9px;font-weight:700;padding:4px 10px;letter-spacing:2px;text-transform:uppercase;}
+
+/* ── SERVICES ── */
+#services{padding:100px 60px;background:#faf8f5;}
+.svc-inner{max-width:1100px;margin:0 auto;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;}
+.svc-card{background:#fff;padding:44px 36px;position:relative;overflow:hidden;border:1px solid #ede5d8;transition:all 0.35s;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#c9a84c;transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.svc-card:hover{box-shadow:0 20px 60px rgba(0,0,0,0.08);border-color:transparent;}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#ede5d8;line-height:1;margin-bottom:20px;}
+.svc-icon{font-size:28px;margin-bottom:14px;display:block;}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#1a1209;margin-bottom:10px;}
+.svc-desc{font-size:13px;color:#8a7a6a;line-height:1.85;}
+.svc-price{margin-top:20px;font-size:13px;font-weight:600;color:#c9a84c;letter-spacing:1px;}
+
+/* ── PROCESS ── */
+#process{padding:100px 60px;background:#2d1f0e;}
+.proc-inner{max-width:900px;margin:0 auto;text-align:center;}
+.proc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:60px;}
+.proc-title em{font-style:italic;color:#c9a84c;}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.proc-steps::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,#c9a84c,#c9a84c,transparent);}
+.proc-step{display:flex;flex-direction:column;align-items:center;gap:16px;padding:0 16px;}
+.proc-circle{width:56px;height:56px;border:1px solid #c9a84c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#c9a84c;background:#2d1f0e;position:relative;z-index:1;}
+.proc-name{font-size:13px;font-weight:500;color:#fff;letter-spacing:1px;}
+.proc-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;}
+
+/* ── TESTIMONIALS ── */
+#testimonials{padding:100px 60px;background:#faf8f5;}
+.test-inner{max-width:1100px;margin:0 auto;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.test-card{background:#fff;padding:36px;border:1px solid #ede5d8;position:relative;transition:all 0.3s;}
+.test-card:hover{border-color:#c9a84c;box-shadow:0 12px 40px rgba(0,0,0,0.06);}
+.test-stars{color:#c9a84c;font-size:14px;letter-spacing:2px;margin-bottom:16px;}
+.test-card p{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#4a3a2a;line-height:1.8;margin-bottom:24px;}
+.test-author{display:flex;align-items:center;gap:14px;}
+.test-av{width:44px;height:44px;background:linear-gradient(135deg,#2d1f0e,#4d3520);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#c9a84c;}
+.test-name{font-size:14px;font-weight:600;color:#1a1209;}
+.test-role{font-size:11px;color:#9a8a7a;margin-top:2px;letter-spacing:0.5px;}
+
+/* ── BOOKING ── */
+#booking{padding:100px 60px;background:#1a1209;}
+.book-inner{max-width:1000px;margin:0 auto;}
+.book-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;margin-top:56px;align-items:start;}
+.book-info{display:flex;flex-direction:column;gap:24px;}
+.bi-item{display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.bi-icon{width:40px;height:40px;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.bi-text h4{font-size:11px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:5px;}
+.bi-text p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;}
+.wa-book{display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 24px;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px;transition:background 0.2s;width:fit-content;}
+.wa-book:hover{background:#22c55e;}
+.book-form{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:40px;}
+.bf-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:24px;}
+.bf-title em{font-style:italic;color:#c9a84c;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:10px;font-weight:500;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:7px;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:13px 15px;font-family:'Jost',sans-serif;font-size:14px;color:#fff;outline:none;transition:border-color 0.2s;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,0.25);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(201,168,76,0.5);}
+.fg select option{background:#1a1209;color:#fff;}
+.fg textarea{height:90px;resize:none;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.sub-btn{width:100%;background:#c9a84c;color:#1a1209;border:none;padding:16px;font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;margin-top:8px;}
+.sub-btn:hover{background:#e0bb5f;transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{background:#0f0a05;padding:32px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(201,168,76,0.1);}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fff;letter-spacing:2px;}
+.footer-logo span{color:#c9a84c;}
+footer p{font-size:12px;color:#4a3a2a;}
+footer a{color:#c9a84c;text-decoration:none;}
+
+/* ── SCROLL REVEAL ── */
+.sr{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s ease;}
+.sr.vis{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  nav.scrolled{padding:12px 24px;}
+  .nav-links{display:none;}
+  #about,#collections,#services,#process,#testimonials,#booking{padding:60px 24px;}
+  .about-grid,.book-grid{grid-template-columns:1fr;}
+  .about-img-accent{display:none;}
+  .col-grid{grid-template-columns:1fr 1fr;}
+  .col-item:first-child{grid-column:span 2;grid-row:auto;}
+  .svc-grid,.test-grid{grid-template-columns:1fr;}
+  .proc-steps{grid-template-columns:1fr 1fr;gap:32px;}
+  .proc-steps::before{display:none;}
+  .fg-row{grid-template-columns:1fr;}
+  footer{padding:24px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo">
+    <div class="logo-main">Prettywomen</div>
+    <div class="logo-sub">Bridal & Fashion Studio</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-btn">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ Dadar's Premier Bridal Studio</div>
+    <h1>Where Every<br><em>Bride</em> Finds<br>Her Story</h1>
+    <p class="hero-sub">Couture · Bridal · Ready-to-Wear · Dadar, Mumbai</p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-gold">View Collections</a>
+      <a href="#booking" class="btn-outline-w">Book Consultation</a>
+    </div>
+  </div>
+  <div class="scroll-line">
+    <span>Scroll</span>
+    <div class="scroll-line-bar"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual sr">
+      <div class="about-img-main">👗</div>
+      <div class="about-img-accent">💍</div>
+      <div class="about-badge">Est. 2012</div>
+    </div>
+    <div class="about-text sr">
+      <span class="sec-tag">Our Story</span>
+      <h2>Crafting <em>Dreams</em><br>Since 2012</h2>
+      <p>Prettywomen Fashion Design Studio was born from a passion for making every woman feel extraordinary. Located in the heart of Dadar West, we have dressed over 500 brides and countless women for life's most important moments.</p>
+      <p>From handcrafted bridal lehengas to elegant evening gowns — every piece is made with precision, love and the finest fabrics sourced from across India.</p>
+      <div class="about-stats">
+        <div><div class="astat-num">500+</div><div class="astat-label">Brides Dressed</div></div>
+        <div><div class="astat-num">12+</div><div class="astat-label">Years Experience</div></div>
+        <div><div class="astat-num">100%</div><div class="astat-label">Custom Made</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="col-inner">
+    <div class="col-header sr">
+      <div>
+        <span class="sec-tag-light">Our Work</span>
+        <h2 class="col-title">Latest <em>Collections</em></h2>
+      </div>
+      <a href="#booking" class="btn-gold">Book a Fitting</a>
+    </div>
+    <div class="col-grid sr">
+      <div class="col-item">
+        <div class="col-img c1">👰</div>
+        <div class="col-badge">Bestseller</div>
+        <div class="col-overlay"></div>
+        <div class="col-info"><div class="col-name">Bridal Lehenga Collection</div><div class="col-cat">Bridal Wear · Custom Made</div></div>
+      </div>
+      <div class="col-item">
+        <div class="col-img c2">🌿</div>
+        <div class="col-overlay"></div>
+        <div class="col-info"><div class="col-name">Pastel Saree Drapes</div><div class="col-cat">Festive · Ready to Wear</div></div>
+      </div>
+      <div class="col-item">
+        <div class="col-img c3">✨</div>
+        <div class="col-badge">New</div>
+        <div class="col-overlay"></div>
+        <div class="col-info"><div class="col-name">Evening Gowns</div><div class="col-cat">Western · Party Wear</div></div>
+      </div>
+      <div class="col-item">
+        <div class="col-img c4">💜</div>
+        <div class="col-overlay"></div>
+        <div class="col-info"><div class="col-name">Bridesmaid Collection</div><div class="col-cat">Coordinated · Custom</div></div>
+      </div>
+      <div class="col-item">
+        <div class="col-img c5">🌸</div>
+        <div class="col-overlay"></div>
+        <div class="col-info"><div class="col-name">Mehndi & Haldi Wear</div><div class="col-cat">Ceremony · Vibrant</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-inner">
+    <span class="sec-tag sr">What We Offer</span>
+    <h2 class="sr" style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:400;line-height:1.1;margin-bottom:0;">Our <em style="font-style:italic;color:#c9a84c;">Services</em></h2>
+    <div class="svc-grid">
+      <div class="svc-card sr">
+        <div class="svc-num">01</div>
+        <span class="svc-icon">👰</span>
+        <div class="svc-name">Bridal Couture</div>
+        <p class="svc-desc">Fully custom bridal lehengas, sarees and gowns crafted to your exact measurements and vision. Multiple fittings included.</p>
+        <div class="svc-price">Starting ₹15,000</div>
+      </div>
+      <div class="svc-card sr">
+        <div class="svc-num">02</div>
+        <span class="svc-icon">✂️</span>
+        <div class="svc-name">Custom Tailoring</div>
+        <p class="svc-desc">Bring your fabric or choose from our collection. We craft salwar suits, blouses, gowns and western wear to perfection.</p>
+        <div class="svc-price">Starting ₹2,500</div>
+      </div>
+      <div class="svc-card sr">
+        <div class="svc-num">03</div>
+        <span class="svc-icon">🛍️</span>
+        <div class="svc-name">Ready-to-Wear</div>
+        <p class="svc-desc">Designer ready-made collection for festive, party and everyday occasions. Fresh arrivals every season.</p>
+        <div class="svc-price">Starting ₹3,500</div>
+      </div>
+      <div class="svc-card sr">
+        <div class="svc-num">04</div>
+        <span class="svc-icon">💍</span>
+        <div class="svc-name">Bridal Package</div>
+        <p class="svc-desc">Complete bridal trousseau — bridal outfit, bridesmaid dresses, family coordinate outfits. One studio, complete solution.</p>
+        <div class="svc-price">Starting ₹45,000</div>
+      </div>
+      <div class="svc-card sr">
+        <div class="svc-num">05</div>
+        <span class="svc-icon">📐</span>
+        <div class="svc-name">Alterations</div>
+        <p class="svc-desc">Perfect fit guaranteed. We alter any garment — shortening, resizing, adding embroidery or embellishments.</p>
+        <div class="svc-price">Starting ₹500</div>
+      </div>
+      <div class="svc-card sr">
+        <div class="svc-num">06</div>
+        <span class="svc-icon">🎨</span>
+        <div class="svc-name">Style Consultation</div>
+        <p class="svc-desc">Not sure what suits you best? Book a 1-hour private styling session with our lead designer Jayesh Sir.</p>
+        <div class="svc-price">₹500 per session</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="proc-inner">
+    <span class="sec-tag-light sr">How It Works</span>
+    <h2 class="proc-title sr">Your Journey to <em>Perfect</em></h2>
+    <div class="proc-steps sr">
+      <div class="proc-step">
+        <div class="proc-circle">01</div>
+        <div class="proc-name">Consultation</div>
+        <p class="proc-desc">Book a visit or call us. Share your vision, occasion and budget.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-circle">02</div>
+        <div class="proc-name">Design</div>
+        <p class="proc-desc">We sketch and plan your outfit with fabric and color selection.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-circle">03</div>
+        <div class="proc-name">Fitting</div>
+        <p class="proc-desc">Two to three fittings to ensure a flawless, custom fit.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-circle">04</div>
+        <div class="proc-name">Delivery</div>
+        <p class="proc-desc">Your finished masterpiece delivered on time, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="test-inner">
+    <span class="sec-tag sr">Happy Brides</span>
+    <h2 class="sr" style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:400;line-height:1.1;margin-bottom:0;">What Our Brides <em style="font-style:italic;color:#c9a84c;">Say</em></h2>
+    <div class="test-grid">
+      <div class="test-card sr">
+        <div class="test-stars">★★★★★</div>
+        <p>"Jayesh Sir understood my vision perfectly. My bridal lehenga was beyond what I imagined. Every guest at my wedding asked who made it. Prettywomen is truly magical."</p>
+        <div class="test-author"><div class="test-av">P</div><div><div class="test-name">Priya Sharma</div><div class="test-role">Bride — December 2024</div></div></div>
+      </div>
+      <div class="test-card sr">
+        <div class="test-stars">★★★★★</div>
+        <p>"I got my entire family's wedding outfits done here — 12 people. The coordination, quality and attention to detail was extraordinary. We will always come back."</p>
+        <div class="test-author"><div class="test-av">R</div><div><div class="test-name">Rekha Joshi</div><div class="test-role">Family Package — February 2025</div></div></div>
+      </div>
+      <div class="test-card sr">
+        <div class="test-stars">★★★★★</div>
+        <p>"Best boutique in Dadar without question. Fair pricing, honest advice and the craftsmanship is exceptional. My bridesmaids and I felt like queens. Highly recommend."</p>
+        <div class="test-author"><div class="test-av">A</div><div><div class="test-name">Ananya Patil</div><div class="test-role">Bridal + Bridesmaids — 2025</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="book-inner">
+    <span class="sec-tag-light sr">Visit Us</span>
+    <h2 class="sr" style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:0;">Book Your <em style="font-style:italic;color:#c9a84c;">Appointment</em></h2>
+    <div class="book-grid">
+      <div class="book-info sr">
+        <div class="bi-item"><div class="bi-icon">📍</div><div class="bi-text"><h4>Location</h4><p>Near Hub Areas,<br>Dadar West, Mumbai — 400028</p></div></div>
+        <div class="bi-item"><div class="bi-icon">📞</div><div class="bi-text"><h4>Contact</h4><p>+91 98XXXXXXXX<br>Ask for Jayesh Sir</p></div></div>
+        <div class="bi-item"><div class="bi-icon">🕐</div><div class="bi-text"><h4>Studio Hours</h4><p>Tuesday — Sunday<br>10:00 AM to 8:00 PM</p></div></div>
+        <div class="bi-item"><div class="bi-icon">📅</div><div class="bi-text"><h4>Bridal Appointments</h4><p>By appointment only.<br>Book 3 months in advance for peak season.</p></div></div>
+        <a href="https://wa.me/9800000000" class="wa-book">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp for Appointment
+        </a>
+      </div>
+      <div class="book-form sr">
+        <div class="bf-title">Request a <em>Consultation</em></div>
+        <div class="fg-row">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        </div>
+        <div class="fg"><label>Service Required</label>
+          <select><option>Select service</option><option>Bridal Couture</option><option>Custom Tailoring</option><option>Ready-to-Wear</option><option>Bridal Package</option><option>Alterations</option><option>Style Consultation</option></select>
+        </div>
+        <div class="fg-row">
+          <div class="fg"><label>Occasion Date</label><input type="text" placeholder="DD / MM / YYYY"></div>
+          <div class="fg"><label>Budget Range</label><select><option>Select</option><option>Below ₹5,000</option><option>₹5,000 — ₹15,000</option><option>₹15,000 — ₹30,000</option><option>₹30,000 — ₹60,000</option><option>Above ₹60,000</option></select></div>
+        </div>
+        <div class="fg"><label>Tell Us Your Vision</label><textarea placeholder="Describe your dream outfit, occasion, style preferences..."></textarea></div>
+        <button class="sub-btn" onclick="alert('Thank you! We will contact you within 24 hours to confirm your appointment.')">Request Appointment ✦</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Prettywomen <span>Studio</span></div>
+  <p>© 2026 Prettywomen Fashion Design Studio, Dadar West, Mumbai</p>
+  <p>Designed by <a href="https://projectportfoleo.netlify.app/">Tanmay Vane</a></p>
+</footer>
+
+<script>
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Scroll reveal
+const srs = document.querySelectorAll('.sr');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 60);
+    }
+  });
+}, { threshold: 0.1 });
+srs.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
